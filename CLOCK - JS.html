@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog clock | Challenge</title>
+    <style>
+        #plate{
+            margin-top: 140px;
+            margin-left: 140px;
+            display: flex;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background-color: #48849d;
+           // border: solid red 5px;
+            justify-content: center;
+            align-items: center;
+
+            box-shadow:0 0 0 50px #423542, 0 0 0 60px #252525;
+        }
+        #point{
+            display: block;
+            z-index: 1;
+           //  transform: rotate(132deg);
+            background-color:chartreuse;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        #stick1{
+            position: absolute;
+          transform: rotate(0deg);
+            transform-origin: top;
+            width: 0px;
+            height: 245px;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+            border: solid black 1px;
+            
+        }
+        #stick2{
+            position: absolute;
+           transform: rotate(0deg);
+            transform-origin: top;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+            background-color: rgba(44, 13, 168, 0.466);
+            width: 5px;
+            height: 220px;
+            //border:solid black 1px;
+        }
+        #stick3{
+            position: absolute;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+           transform:rotate(0deg);
+            transform-origin:top;
+            background-color:  rgba(44, 13, 168, 0.51);
+            width:7px;
+            height:150px;
+            //border:solid black 1px;
+        }
+        .markings{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+        }
+        .markings span{
+         color: #809998;
+            font-size: 35px;  
+        }
+        .number1{
+            transform: rotate(31deg);
+            position: absolute;
+            left: 525px;
+            top: -1px;
+        }
+        .number2{
+         transform: rotate(56deg);
+            position: absolute;
+            left: 623px;
+             top: 100px;
+        }
+        .number3{
+            position: absolute;
+            left: 649px;
+            top: 232px;
+            
+        }
+        .number4{
+         transform: rotate(125deg);
+            position: absolute;
+            left: 608px;
+            top: 381px;
+        }
+        .number5{
+         transform: rotate(131deg);
+            position: absolute;
+            left: 514px;
+            top: 472px;
+        }
+        .number6{
+            position: absolute;
+            left: 382px;
+            top: 507px;
+        }
+        .number7{
+         transform: rotate(-153deg);
+            position: absolute;
+            left: 238px;
+            top: 471px;
+        }
+        .number8{
+         transform: rotate(48deg);
+            position: absolute;
+            left: 150px;
+            top: 381px;
+        }
+        .number9{
+            position: absolute;
+            left: 97px;
+            top: 232px;
+        }
+        .number10{
+         transform: rotate(-57deg);
+            position: absolute;
+            left: 129px;
+             top: 100px;
+        }
+        .number11{
+         transform: rotate(-32deg);
+            position: absolute;
+            left: 224px;
+            top: -1px;
+        }
+        .number12{
+            position: absolute;
+            left: 370px;
+            top: -44px;
+        }
+        #pointer{
+            width: 25px;
+            height: 25px;
+            background-color:#423542 ;
+            z-index: 10;
+            border-radius: 50%;
+            position: absolute;
+            top: 379px;
+            left: 387px;
+        }
+    </style>
+</head>
+<body>
+   <div id="pointer"></div>
+    <span id="time"></span>
+    <div id="container">
+        <div class="markings">
+            <span class="number1">1</span>
+            <span class="number2">2</span>
+            <span style="color: #098909;" class="number3">III</span>
+            <span class="number4">4</span>
+            <span class="number5">5</span>
+            <span style="color: #098909;" class="number6">VI</span>
+            <span class="number7">7</span>
+            <span class="number8">8</span>
+            <span style="color: #098909;" class="number9">IX</span>
+            <span class="number10">10</span>
+            <span class="number11">11</span>
+            <span style="color: #098909;" class="number12">XII</span>
+        </div>
+            <div id="plate">
+                <div>
+                    <span id="stick1"></span>
+                    <span id="stick2"></span>
+                    <span id="stick3"></span>
+                </div>
+    
+            </div>
+    </div>
+        
+        <script>//Outer PArt
+                
+            
+                const stick1 = document.querySelector('#stick1');
+                const stick2 = document.querySelector('#stick2');
+                const stick3 = document.querySelector('#stick3');
+             function timing(){
+                    
+                   
+                var time = new Date();
+                       
+                    //document.getElementById('time').innerHTML=time;
+                    var sec = time.getSeconds();
+                    //For sec
+                    if(sec == 00){  
+                        stick1.style.transform = "rotate(180deg)";
+                     }
+                    else if(sec == 1){  
+                        stick1.style.transform = "rotate(185deg)";
+                     }
+                     else if(sec == 2){  
+                        stick1.style.transform = "rotate(193deg)";
+                     }
+                     else if(sec == 3){  
+                        stick1.style.transform = "rotate(203deg)";
+                     }
+                     else if(sec == 4){  
+                        stick1.style.transform = "rotate(208deg)";
+                     }
+                     else if(sec == 5){  
+                        stick1.style.transform = "rotate(215deg)";
+                     }
+                     else if(sec == 6){  
+                        stick1.style.transform = "rotate(220deg)";
+                     }
+                    else if(sec == 7){  
+                        stick1.style.transform = "rotate(224deg)";
+                     }
+                     else if(sec == 8){  
+                        stick1.style.transform = "rotate(230deg)";
+                     }
+                     else if(sec == 9){  
+                        stick1.style.transform = "rotate(234deg)";
+                     }
+                     else if(sec == 10){  
+                        stick1.style.transform = "rotate(242deg)";
+                     }
+                     else if(sec == 11){  
+                        stick1.style.transform = "rotate(248deg)";
+                     }
+                    else if(sec == 12){  
+                        stick1.style.transform = "rotate(253deg)";
+                     }
+                     else if(sec == 13){  
+                        stick1.style.transform = "rotate(258deg)";
+                     }
+                     else if(sec == 14){  
+                        stick1.style.transform = "rotate(265deg)";
+                     }
+                     else if(sec == 15){  
+                        stick1.style.transform = "rotate(270deg)";
+                     }
+                     else if(sec == 16){  
+                        stick1.style.transform = "rotate(276deg)";
+                     }
+                    else if(sec == 17){  
+                        stick1.style.transform = "rotate(282deg)";
+                     }
+                     else if(sec == 18){  
+                        stick1.style.transform = "rotate(288deg)";
+                     }
+                     else if(sec == 19){  
+                        stick1.style.transform = "rotate(295deg)";
+                     }
+                     else if(sec == 20){  
+                        stick1.style.transform = "rotate(305deg)";
+                     }
+                     else if(sec == 21){  
+                        stick1.style.transform = "rotate(310deg)";
+                     }
+                     else if(sec == 22){  
+                        stick1.style.transform = "rotate(318deg)";
+                     }
+                    else if(sec == 23){  
+                        stick1.style.transform = "rotate(320deg)";
+                     }
+                     else if(sec == 24){  
+                        stick1.style.transform = "rotate(326deg)";
+                     }
+                     else if(sec == 25){  
+                        stick1.style.transform = "rotate(330deg)";
+                     }
+                     else if(sec == 26){  
+                        stick1.style.transform = "rotate(337deg)";
+                     }
+                     else if(sec == 27){  
+                        stick1.style.transform = "rotate(343deg)";
+                     }
+                    else if(sec == 28){  
+                        stick1.style.transform = "rotate(348deg)";
+                     }
+                     else if(sec == 29){  
+                        stick1.style.transform = "rotate(354deg)";
+                     }
+                     else if(sec == 30){  
+                        stick1.style.transform = "rotate(360deg)";
+                     }
+                     
+                    else if(sec == 31){  
+                        stick1.style.transform = "rotate(7deg)";
+                     }
+                     else if(sec == 32){  
+                        stick1.style.transform = "rotate(14deg)";
+                     }
+                     else if(sec == 33){  
+                        stick1.style.transform = "rotate(21deg)";
+                     }
+                     else if(sec == 34){  
+                        stick1.style.transform = "rotate(24deg)";
+                     }
+                     else if(sec == 35){  
+                        stick1.style.transform = "rotate(30deg)";
+                     }
+                     else if(sec == 36){  
+                        stick1.style.transform = "rotate(34deg)";
+                     }
+                     else if(sec == 37){  
+                        stick1.style.transform = "rotate(39deg)";
+                     }
+                     else if(sec == 38){  
+                        stick1.style.transform = "rotate(44deg)";
+                     }
+                     else if(sec == 39){  
+                        stick1.style.transform = "rotate(49deg)";
+                     }
+                     else if(sec == 40){  
+                        stick1.style.transform = "rotate(58deg)";
+                     }
+                     else if(sec == 41){  
+                        stick1.style.transform = "rotate(65deg)";
+                     }
+                     else if(sec == 42){  
+                        stick1.style.transform = "rotate(70deg)";
+                     }
+                     else if(sec == 43){  
+                        stick1.style.transform = "rotate(75deg)";
+                     }
+                     else if(sec == 44){  
+                        stick1.style.transform = "rotate(82deg)";
+                     }
+                     else if(sec == 45){  
+                        stick1.style.transform = "rotate(88deg)";
+                     }
+                     else if(sec == 46){  
+                        stick1.style.transform = "rotate(92deg)";
+                     }
+                     else if(sec == 47){  
+                        stick1.style.transform = "rotate(97deg)";
+                     }
+                     else if(sec == 48){  
+                        stick1.style.transform = "rotate(104deg)";
+                     }
+                     else if(sec == 49){  
+                        stick1.style.transform = "rotate(110deg)";
+                     }
+                     else if(sec == 50){  
+                        stick1.style.transform = "rotate(119deg)";
+                     }
+                     else if(sec == 51){  
+                        stick1.style.transform = "rotate(126deg)";
+                     }
+                     else if(sec == 52){  
+                        stick1.style.transform = "rotate(131eg)";
+                     }
+                     else if(sec == 53){  
+                        stick1.style.transform = "rotate(136deg)";
+                     }
+                     else if(sec == 54){  
+                        stick1.style.transform = "rotate(142deg)";
+                     }
+                     else if(sec == 55){  
+                        stick1.style.transform = "rotate(147deg)";
+                     }
+                     else if(sec == 56){  
+                        stick1.style.transform = "rotate(153deg)";
+                     }
+                     else if(sec == 57){  
+                        stick1.style.transform = "rotate(162eg)";
+                     }
+                     else if(sec == 58){  
+                        stick1.style.transform = "rotate(168deg)";
+                     }
+                     else if(sec == 59){  
+                        stick1.style.transform = "rotate(175deg)";
+                     }
+                     
+                     
+                    
+                      //For sec
+                  
+                
+                //Minutes
+                var min = time.getMinutes();
+                if(min == 00){  
+                        stick2.style.transform = "rotate(180deg)";
+                     }
+                    else if(min == 1){  
+                        stick2.style.transform = "rotate(185deg)";
+                     }
+                     else if(min == 2){  
+                        stick2.style.transform = "rotate(193deg)";
+                     }
+                     else if(min == 3){  
+                        stick2.style.transform = "rotate(203deg)";
+                     }
+                     else if(min == 4){  
+                        stick2.style.transform = "rotate(208deg)";
+                     }
+                     else if(min == 5){  
+                        stick2.style.transform = "rotate(215deg)";
+                     }
+                     else if(min == 6){  
+                        stick2.style.transform = "rotate(220deg)";
+                     }
+                    else if(min == 7){  
+                        stick2.style.transform = "rotate(224deg)";
+                     }
+                     else if(min == 8){  
+                        stick2.style.transform = "rotate(230deg)";
+                     }
+                     else if(min == 9){  
+                        stick2.style.transform = "rotate(234deg)";
+                     }
+                     else if(min == 10){  
+                        stick2.style.transform = "rotate(242deg)";
+                     }
+                     else if(min == 11){  
+                        stick2.style.transform = "rotate(248deg)";
+                     }
+                    else if(min == 12){  
+                        stick2.style.transform = "rotate(253deg)";
+                     }
+                     else if(min == 13){  
+                        stick2.style.transform = "rotate(258deg)";
+                     }
+                     else if(min == 14){  
+                        stick2.style.transform = "rotate(265deg)";
+                     }
+                     else if(min == 15){  
+                        stick2.style.transform = "rotate(270deg)";
+                     }
+                     else if(min == 16){  
+                        stick2.style.transform = "rotate(276deg)";
+                     }
+                    else if(min == 17){  
+                        stick2.style.transform = "rotate(282deg)";
+                     }
+                     else if(min == 18){  
+                        stick2.style.transform = "rotate(288deg)";
+                     }
+                     else if(min == 19){  
+                        stick2.style.transform = "rotate(295deg)";
+                     }
+                     else if(min == 20){  
+                        stick2.style.transform = "rotate(305deg)";
+                     }
+                     else if(min == 21){  
+                        stick2.style.transform = "rotate(310deg)";
+                     }
+                     else if(min == 22){  
+                        stick2.style.transform = "rotate(318deg)";
+                     }
+                    else if(min == 23){  
+                        stick2.style.transform = "rotate(320deg)";
+                     }
+                     else if(min == 24){  
+                        stick2.style.transform = "rotate(326deg)";
+                     }
+                     else if(min == 25){  
+                        stick2.style.transform = "rotate(330deg)";
+                     }
+                     else if(min == 26){  
+                        stick2.style.transform = "rotate(337deg)";
+                     }
+                     else if(min == 27){  
+                        stick2.style.transform = "rotate(343deg)";
+                     }
+                    else if(min == 28){  
+                        stick2.style.transform = "rotate(348deg)";
+                     }
+                     else if(min == 29){  
+                        stick2.style.transform = "rotate(354deg)";
+                     }
+                     else if(min == 30){  
+                        stick2.style.transform = "rotate(360deg)";
+                     }
+                     
+                    else if(min == 31){  
+                        stick2.style.transform = "rotate(7deg)";
+                     }
+                     else if(min == 32){  
+                        stick2.style.transform = "rotate(14deg)";
+                     }
+                     else if(min == 33){  
+                        stick2.style.transform = "rotate(21deg)";
+                     }
+                     else if(min == 34){  
+                        stick2.style.transform = "rotate(24deg)";
+                     }
+                     else if(min == 35){  
+                        stick2.style.transform = "rotate(30deg)";
+                     }
+                     else if(min == 36){  
+                        stick2.style.transform = "rotate(34deg)";
+                     }
+                     else if(min == 37){  
+                        stick2.style.transform = "rotate(39deg)";
+                     }
+                     else if(min == 38){  
+                        stick2.style.transform = "rotate(44deg)";
+                     }
+                     else if(min == 39){  
+                        stick2.style.transform = "rotate(49deg)";
+                     }
+                     else if(min == 40){  
+                        stick2.style.transform = "rotate(58deg)";
+                     }
+                     else if(min == 41){  
+                        stick2.style.transform = "rotate(65deg)";
+                     }
+                     else if(min == 42){  
+                        stick2.style.transform = "rotate(70deg)";
+                     }
+                     else if(min == 43){  
+                        stick2.style.transform = "rotate(75deg)";
+                     }
+                     else if(min == 44){  
+                        stick2.style.transform = "rotate(82deg)";
+                     }
+                     else if(min == 45){  
+                        stick2.style.transform = "rotate(88deg)";
+                     }
+                     else if(min == 46){  
+                        stick2.style.transform = "rotate(92deg)";
+                     }
+                     else if(min == 47){  
+                        stick2.style.transform = "rotate(97deg)";
+                     }
+                     else if(min == 48){  
+                        stick2.style.transform = "rotate(104deg)";
+                     }
+                     else if(min == 49){  
+                        stick2.style.transform = "rotate(110deg)";
+                     }
+                     else if(min == 50){  
+                        stick2.style.transform = "rotate(119deg)";
+                     }
+                     else if(min == 51){  
+                        stick2.style.transform = "rotate(126deg)";
+                     }
+                     else if(min == 52){  
+                        stick2.style.transform = "rotate(131eg)";
+                     }
+                     else if(min == 53){  
+                        stick2.style.transform = "rotate(136deg)";
+                     }
+                     else if(min == 54){  
+                        stick2.style.transform = "rotate(142deg)";
+                     }
+                     else if(min == 55){  
+                        stick2.style.transform = "rotate(147deg)";
+                     }
+                     else if(min == 56){  
+                        stick2.style.transform = "rotate(153deg)";
+                     }
+                     else if(min == 57){  
+                        stick2.style.transform = "rotate(162eg)";
+                     }
+                     else if(min == 58){  
+                        stick2.style.transform = "rotate(168deg)";
+                     }
+                     else if(min == 59){  
+                        stick2.style.transform = "rotate(175deg)";
+                     }
+                  
+                //Minutes
+                     
+                //Hours
+                var Hours=time.getHours();
+
+                if(Hours == 00)
+                {
+                  stick3.style.transform = "rotate(180deg)";
+                }
+                if(Hours == 1)
+                {
+                  stick3.style.transform = "rotate(215deg)";
+                }
+                if(Hours == 2)
+                {
+                  stick3.style.transform = "rotate(242deg)";
+                }
+                if(Hours == 3)
+                {
+                  stick3.style.transform = "rotate(305deg)";
+                }
+                if(Hours == 4)
+                {
+                  stick3.style.transform = "rotate(330deg)";
+                }
+                if(Hours == 5)
+                {
+                  stick3.style.transform = "rotate(360deg)";
+                }
+                if(Hours == 6)
+                {
+                  stick3.style.transform = "rotate(30deg)";
+                }
+                if(Hours == 7)
+                {
+                  stick3.style.transform = "rotate(58deg)";
+                }
+                if(Hours == 8)
+                {
+                  stick3.style.transform = "rotate(88deg)";
+                }
+                if(Hours == 9)
+                {
+                  stick3.style.transform = "rotate(119deg)";
+                }
+                if(Hours == 10)
+                {
+                  stick3.style.transform = "rotate(147deg)";
+                }
+                if(Hours == 11)
+                {
+                  stick3.style.transform = "rotate(180deg)";
+                }
+                if(Hours == 12)
+                {
+                  stick3.style.transform = "rotate(180deg)";
+                }
+                if(Hours == 13)
+                {
+                  stick3.style.transform = "rotate(215deg)";
+                }
+                if(Hours == 14)
+                {
+                  stick3.style.transform = "rotate(242deg)";
+                }
+                if(Hours == 15)
+                {
+                  stick3.style.transform = "rotate(305deg)";
+                }
+                if(Hours == 16)
+                {
+                  stick3.style.transform = "rotate(330deg)";
+                }
+                if(Hours == 17)
+                {
+                  stick3.style.transform = "rotate(360deg)";
+                }
+                if(Hours == 18)
+                {
+                  stick3.style.transform = "rotate(30deg)";
+                }
+                if(Hours == 19)
+                {
+                  stick3.style.transform = "rotate(58deg)";
+                }
+                if(Hours == 20)
+                {
+                  stick3.style.transform = "rotate(88deg)";
+                }
+                if(Hours == 21)
+                {
+                  stick3.style.transform = "rotate(119deg)";
+                }
+                if(Hours == 22)
+                {
+                  stick3.style.transform = "rotate(147deg)";
+                }
+                if(Hours == 23)
+                {
+                  stick3.style.transform = "rotate(180deg)";
+                }
+               }
+                //Hours
+                                       //battery
+                                 setInterval(timing,1000);
+                                       //battery
+            
+            
+        </script>
+</body>
+</html>
